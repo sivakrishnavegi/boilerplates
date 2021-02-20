@@ -1,12 +1,16 @@
 const express = require('express');
-const app = express() ;
+const dotenv = require('dotenv');   //environvement vairables
 
-const port = 3000
+const app = express();
+
+dotenv.config({path :'config.env'})    //setting path of config.env file at root dir contains env vars
+
+const PORT = process.env.PORT || 3000
 
 app.get('/', (req,res)=> {
     res.send("hi you are live !");
 })
 
-app.listen(port, () => {
-    console.log(`Server started on port${port}`);
+app.listen(PORT, () => {
+    console.log(`Server started on port http://localhost:${PORT}`);
 });
